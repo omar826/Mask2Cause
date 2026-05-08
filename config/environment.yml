@@ -1,0 +1,16 @@
+name: Mask2Cause
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - pip
+  - numpy
+  - pandas
+  - matplotlib
+  - seaborn
+  - jupyter
+  - scikit-learn
+  - packaging
+  - pip:
+    - -r requirements.txt
