@@ -1,74 +1,80 @@
-# Official repository for Mask2Cause : Causal Discovery via Adjacency Constrained Causal Attention
-Mask2Cause is a Transformer based **causal discovery** architecture that can be used to enhance **multivariate forecasting** with significant reduction in the parameter set size. It learns a global adjacency matrix (causal graph) that acts as a structural mask for the attention mechanism, ensuring that only truly causal parents can influence the target variable. This provides better forecasting accuracy due to absence of any spurious links that can misguide the model.
+# Mask2Cause
 
+M2C learns causal graphs from multivariate time series using MSE or Gaussian NLL.
+The artifact also includes a two-graph model for mean/variance parent recovery
+and causal-pruning forecasting experiments.
 
-## Project Structure
+## Contents and installation
 
-```text
-Mask2Cause/
-├── causalDiscovery/                                                   # Mask2Cause code (has ablation variants as well)
-│   ├── mask2cause_MSE_decoupledFinalProjection_residualPrediction.py  # Ablation Variant
-│   ├── mask2cause_MSE_decoupledFinalProjection.py                     # Ablation Variant
-│   ├── mask2cause_MSE_residualPrediction.py                           # Ablation Variant
-│   ├── mask2cause_MSE.py                                              # Standard MSE model
-│   ├── mask2cause_NLL_decoupledFinalProjection.py                     # Ablation Variant
-│   ├── mask2cause_NLL.py                                              # Standard NLL model
-│   └── run_and_tune.py                                                # Runs the above models and tunes over 11 sets of hyperparameters
-|── config/                      
-│   ├── environment.yml           
-│   ├── requirements.txt        # dependencies to be installed for running Mask2Cause
-├── data/                       # Datasets (dataloaders are in the run code itself)
-│   ├── causaltime_gen_ver1.0/  # medical, pm25, traffic datasets (folders containing gen_data.npy, graph.npy each)
-│   ├── dream3/                 # Dream3TensorData (.pt files) & TrueGeneNetworks (.tsv files)
-│   ├── lorenz96/               # Lorenz system data (.npz files)
-│   ├── mixed_physics/          # Mixed physics datasets (.npz files)
-│   └── var/                    # Vector Autoregression data (.npz files)
-│   ├── causalvar.py            # Generating Mixed-Physics dataset  
-├── forecasting/                # Forecasting code (Along with CUTS+ comparision)
-│   ├── data_for_forecasting/   # dream3, lor_data (lorenz in .csv) and var_data (VAR in .csv) datasets with discovered graphs from M2C, CUTS+
-│   ├── dream_arima.py                  # Forecasting on Dream3 using ARIMAX model (M2C causal graph pruning)
-│   ├── dream_cmp_cutsPlus_arima.py     # Compare on Dream3 using ARIMAX model (M2C and CUTS+ graph pruning)
-│   ├── dream_cmp_cutsPlus_mlp.py       # Compare on Dream3 using MLP model (M2C and CUTS+ graph pruning)
-│   └── dream_cmp_cutsPlus_nbeats.py    # Compare on Dream3 using NBEATS model (M2C and CUTS+ graph pruning)
-│   ├── dream_cmp_cutsPlus_var.py       # Compare on Dream3 using VAR model (M2C and CUTS+ graph pruning)
-│   ├── dream_mlp.py                    # Forecasting on Dream3 using MLP model (M2C causal graph pruning)
-│   ├── dream_nbeats.py                 # Forecasting on Dream3 using NBEATS model (M2C causal graph pruning)
-│   ├── dream_var.py                    # Forecasting on Dream3 using VAR model (M2C causal graph pruning)
-│   ├── lor_arima.py                    # Forecasting on Lorenz using ARIMAX model (M2C and CUTS+ causal graph pruning)
-│   └── lor_mlp.py                      # Forecasting on Lorenz using MLP model (M2C cand CUTS+ ausal graph pruning)
-│   ├── lor_nbeats.py                   # Forecasting on Lorenz using NBEATS model (M2C cand CUTS+ ausal graph pruning)
-│   ├── lor_var.py                      # Forecasting on Lorenz using VAR model (M2C and CUTS+ causal graph pruning)
-│   ├── var_arima.py                    # Forecasting on VAR using ARIMAX model (M2C and CUTS+ causal graph pruning)
-│   ├── var_mlp.py                      # Forecasting on VAR using MLP model (M2C and CUTS+ causal graph pruning)
-│   ├── var_nbeats.py                   # Forecasting on VAR using NBEATS model (M2C and CUTS+ causal graph pruning)
-│   └── var_var.py                      # Forecasting on VAR using VAR model (M2C and CUTS+ causal graph pruning)
-├── results/
-│   └── matrices/               # Saved .npy adjacency matrices stored here (after running)
-└── README.md                   # readme file
-```
-## Set-Up
-```bash
-# Run the following commands on terminal to set-up the environment for running the files
+- `causalDiscovery/`: models, dataset loaders, runner, and graph metrics.
+- `data/`: VAR, Lorenz-96, Mixed Physics, and RHINO synthetic benchmarks.
+- `forecasting/`: forecasting scripts, VAR/Lorenz data, and causal masks.
+- `config/best_configs.json`: model-specific settings for all six benchmarks.
+- `tests/`: automated checks of loaders, metrics, models, and CLI behavior.
 
-python -m venv .venv                        # create a venv
-.venv\\Scripts\\activate                    # Linux : source .venv/bin/activate  
-pip install -r config/requirements.txt      # Install dependencies 
-```
-## Running Causal Discovery Examples
-```bash
-# Running Mask2Cause (MSE variant) on one of the lorenz96 dataset files - F_10_T_500_dataset_2.npz
-python causalDiscovery/run_and_tune.py -m mask2cause_MSE -lr 0.001 -bs 32 -seq 1 -dm 64 -l1 0.02 -df 100 -e 150 --data_dir data\lorenz96\F_10_T_500_dataset_2.npz
+Use Python 3.10 or newer and install the dependencies:
 
-# To change hyperparameters use following syntax
-# python causalDiscovery/run_and_tune.py -m "Model Name" -lr "Learning Rate" -bs "Batch Size" -seq "Sequence Length" -dm "D_Model" -l1 "Penalty factor" --l1_anneal "Annealing penalty factor" -df "Diagonal Forcing" -e "Epochs" --data_dir "Relative path to data file" (data folder for the case of causaltime)
-# Ex. Run Mask2Cause (NLL variant) with custom hyperparameters on one of Dream3 datasets
-python causalDiscovery/run_and_tune.py -m mask2cause_NLL -lr 0.001 -bs 32 -seq 1 -dm 64 -l1 0.02 -df 100 -e 140 --data_dir data\lorenz96\F_10_T_500_dataset_2.npz
-```
-## Running Forecasting examples
-```bash
-cd forecasting                   
-# Running any of the scripts in forecasting can be done by using "python scripts_name.py"
-# Ex. Run ARIMAX on dream3
-python lor_arima.py
+```sh
+python -m pip install -r config/requirements.txt
 ```
 
+Download CausalTime from its [official website](https://www.causaltime.cc/).
+Place each dataset's `gen_data.npy` and `graph.npy` under
+`data/causaltime_gen_ver1.0/traffic`, `pm25`, or `medical`.
+
+Download DREAM3 from the [official SRU implementation used by the paper](https://github.com/sakhanna/SRU_for_GCI/tree/master/data).
+Place `Size100Ecoli1.pt`, `Size100Ecoli2.pt`, and the three `Size100Yeast*.pt`
+files under `data/dream3/Dream3TensorData/`, with the corresponding ground-truth
+TSV files under `data/dream3/TrueGeneNetworks/`. Both loaders are included;
+these two benchmarks are not bundled.
+
+## Run with saved settings
+
+Supply the model (`mse`, `nll`, or `dual`) and an exact dataset filename:
+
+```sh
+python -m causalDiscovery.run_and_tune mse rhino_paper_ER_N10_noinst_history_seed0.npz
+python -m causalDiscovery.run_and_tune nll S_30_T_500_dataset_1.npz
+python -m causalDiscovery.run_and_tune dual heteroscedastic_data_50_regen.npz
+```
+
+The runner selects settings from `config/best_configs.json`. A dataset filename
+alone selects one run. Full paths are also accepted; CausalTime uses its dataset
+directory. MSE/NLL settings cover all six benchmarks; dual settings cover Mixed
+Physics. Use `--device cuda` for GPU execution and `--output PATH` to choose a new
+output directory.
+
+## Run with arbitrary settings
+
+Override any saved value directly, or use `--manual` to bypass saved settings:
+
+```sh
+python -m causalDiscovery.run_and_tune nll S_30_T_500_dataset_1.npz --lr 0.003 --epochs 50 --dropout 0.0 --adj-init -1
+python -m causalDiscovery.run_and_tune mse data/var/S_30_T_500_dataset_1.npz --manual --dataset-type var --lr 0.001 --batch-size 32 --seq-len 3 --d-model 64 --lambda-l1 0.01 --diagonal-force 100 --epochs 10
+```
+
+Omitted manual options use the model defaults. Explicitly request repeat seeds
+or a Cartesian hyperparameter grid by supplying multiple values:
+
+```sh
+python -m causalDiscovery.run_and_tune nll S_30_T_500_dataset_1.npz --seeds 0 1 2 --lr 0.001 0.003 --dropout 0.0 0.1
+```
+
+Each requested run saves and displays its own AUROC, AUPRC, SHD, and F1, along with
+its configuration, checkpoint, loss history, and adjacency scores. Full-matrix
+and off-diagonal metrics are saved; SHD/F1 use fixed-0.5 and true-density top-K
+thresholds. Dual runs also report separate parent metrics when labels exist.
+
+Use `--help` for all options, `--dry-run` to display configurations without
+running, and `--verbose` to print epoch losses.
+
+## Forecasting
+
+```sh
+python forecasting/lor_var.py --output results/forecast_lor
+python forecasting/var_mlp.py --output results/forecast_var_mlp
+```
+
+The `*_arima.py`, `*_mlp.py`, `*_nbeats.py`, and `*_var.py` scripts use settings
+defined in each script and save MSE and gain/parameter comparisons to
+`metrics.csv`. Neural scripts accept `--epochs`; all accept `--seed` and `--limit`.

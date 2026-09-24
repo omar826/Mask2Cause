@@ -1,3 +1,8 @@
+from pathlib import Path
+try:
+    from . import artifact_runtime as runtime
+except ImportError:
+    import artifact_runtime as runtime
 import pandas as pd
 import numpy as np
 from statsmodels.tsa.arima.model import ARIMA
@@ -11,7 +16,7 @@ warnings.filterwarnings("ignore")
 
 # ---------------- SETTINGS ----------------
 NUM_VARS = 10
-BASE_PATH = "data_for_forecasting/var_data"
+BASE_PATH = str(Path(__file__).resolve().parent / "data_for_forecasting/var_data")
 DATA_DIR = os.path.join(BASE_PATH, "var_datasets")
 M2C_DIR = os.path.join(BASE_PATH, "mask2cause_matrices")
 
@@ -36,6 +41,7 @@ def run_var_arimax_benchmark():
         return
 
     csv_files = sorted([f for f in os.listdir(DATA_DIR) if f.endswith(".csv")])
+    csv_files = runtime.select_files(csv_files)
     
     print(f"Found {len(csv_files)} VAR datasets. Starting ARIMAX benchmark...")
     print("-" * 90)
@@ -125,6 +131,7 @@ def run_var_arimax_benchmark():
         print(f"{'VAR-ARIMAX CAUSAL BENCHMARK SUMMARY':^95}")
         print("="*95)
         df_final = pd.DataFrame(dataset_results)
+        runtime.save_results(df_final)
         print(df_final.to_string(index=False))
         print("-" * 95)
         print(f"Overall Average Gain         : {df_final['Gain_%'].mean():.2f}%")
@@ -132,4 +139,6 @@ def run_var_arimax_benchmark():
         print("="*95)
 
 if __name__ == "__main__":
+    runtime.configure(__file__, globals())
     run_var_arimax_benchmark()
+    runtime.ensure_results()

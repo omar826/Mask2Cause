@@ -1,0 +1,1106 @@
+{
+  "configurations": {
+    "VAR_T500": {
+      "dataset_type": "var",
+      "models": {
+        "mse": {
+          "lr": 0.001,
+          "batch_size": 32,
+          "seq_len": 3,
+          "d_model": 64,
+          "lambda_l1": 0.01,
+          "diagonal_force": 100.0,
+          "epochs": 10,
+          "n_heads": 4,
+          "e_layers": 2,
+          "l1_anneal_epochs": 0,
+          "dropout": 0.1,
+          "adj_init": -1.0,
+          "shuffle_mode": "dataloader"
+        },
+        "nll": {
+          "lr": 0.001,
+          "batch_size": 32,
+          "seq_len": 3,
+          "d_model": 64,
+          "lambda_l1": 0.01,
+          "diagonal_force": 100.0,
+          "epochs": 10,
+          "n_heads": 4,
+          "e_layers": 2,
+          "l1_anneal_epochs": 0,
+          "dropout": 0.1,
+          "adj_init": 1.0,
+          "shuffle_mode": "dataloader"
+        }
+      }
+    },
+    "VAR_T1000": {
+      "dataset_type": "var",
+      "models": {
+        "mse": {
+          "lr": 0.001,
+          "batch_size": 32,
+          "seq_len": 3,
+          "d_model": 64,
+          "lambda_l1": 0.01,
+          "diagonal_force": 100.0,
+          "epochs": 5,
+          "n_heads": 4,
+          "e_layers": 2,
+          "l1_anneal_epochs": 0,
+          "dropout": 0.1,
+          "adj_init": -1.0,
+          "shuffle_mode": "dataloader"
+        },
+        "nll": {
+          "lr": 0.001,
+          "batch_size": 32,
+          "seq_len": 3,
+          "d_model": 64,
+          "lambda_l1": 0.01,
+          "diagonal_force": 100.0,
+          "epochs": 5,
+          "n_heads": 4,
+          "e_layers": 2,
+          "l1_anneal_epochs": 0,
+          "dropout": 0.1,
+          "adj_init": 1.0,
+          "shuffle_mode": "dataloader"
+        }
+      }
+    },
+    "Lorenz_F10_T250": {
+      "dataset_type": "lorenz96",
+      "models": {
+        "mse": {
+          "lr": 0.01,
+          "batch_size": 32,
+          "seq_len": 1,
+          "d_model": 32,
+          "lambda_l1": 0.02,
+          "diagonal_force": 100.0,
+          "epochs": 200,
+          "n_heads": 4,
+          "e_layers": 2,
+          "l1_anneal_epochs": 0,
+          "dropout": 0.1,
+          "adj_init": -1.0,
+          "shuffle_mode": "dataloader"
+        },
+        "nll": {
+          "lr": 0.01,
+          "batch_size": 32,
+          "seq_len": 1,
+          "d_model": 32,
+          "lambda_l1": 0.02,
+          "diagonal_force": 100.0,
+          "epochs": 185,
+          "n_heads": 4,
+          "e_layers": 2,
+          "l1_anneal_epochs": 0,
+          "dropout": 0.1,
+          "adj_init": 1.0,
+          "shuffle_mode": "dataloader"
+        }
+      }
+    },
+    "Lorenz_F10_T500": {
+      "dataset_type": "lorenz96",
+      "models": {
+        "mse": {
+          "lr": 0.001,
+          "batch_size": 32,
+          "seq_len": 1,
+          "d_model": 64,
+          "lambda_l1": 0.02,
+          "diagonal_force": 100.0,
+          "epochs": 150,
+          "n_heads": 4,
+          "e_layers": 2,
+          "l1_anneal_epochs": 0,
+          "dropout": 0.1,
+          "adj_init": -1.0,
+          "shuffle_mode": "dataloader"
+        },
+        "nll": {
+          "lr": 0.001,
+          "batch_size": 32,
+          "seq_len": 1,
+          "d_model": 64,
+          "lambda_l1": 0.02,
+          "diagonal_force": 100.0,
+          "epochs": 140,
+          "n_heads": 4,
+          "e_layers": 2,
+          "l1_anneal_epochs": 0,
+          "dropout": 0.1,
+          "adj_init": 1.0,
+          "shuffle_mode": "dataloader"
+        }
+      }
+    },
+    "Lorenz_F40_T250": {
+      "dataset_type": "lorenz96",
+      "models": {
+        "mse": {
+          "lr": 0.01,
+          "batch_size": 32,
+          "seq_len": 1,
+          "d_model": 64,
+          "lambda_l1": 0.02,
+          "diagonal_force": 100.0,
+          "epochs": 150,
+          "n_heads": 4,
+          "e_layers": 2,
+          "l1_anneal_epochs": 0,
+          "dropout": 0.1,
+          "adj_init": -1.0,
+          "shuffle_mode": "dataloader"
+        },
+        "nll": {
+          "lr": 0.01,
+          "batch_size": 32,
+          "seq_len": 1,
+          "d_model": 64,
+          "lambda_l1": 0.02,
+          "diagonal_force": 100.0,
+          "epochs": 150,
+          "n_heads": 4,
+          "e_layers": 2,
+          "l1_anneal_epochs": 0,
+          "dropout": 0.1,
+          "adj_init": 1.0,
+          "shuffle_mode": "dataloader"
+        }
+      }
+    },
+    "Lorenz_F40_T500": {
+      "dataset_type": "lorenz96",
+      "models": {
+        "mse": {
+          "lr": 0.001,
+          "batch_size": 32,
+          "seq_len": 1,
+          "d_model": 64,
+          "lambda_l1": 0.02,
+          "diagonal_force": 100.0,
+          "epochs": 150,
+          "n_heads": 4,
+          "e_layers": 2,
+          "l1_anneal_epochs": 0,
+          "dropout": 0.1,
+          "adj_init": -1.0,
+          "shuffle_mode": "dataloader"
+        },
+        "nll": {
+          "lr": 0.001,
+          "batch_size": 32,
+          "seq_len": 1,
+          "d_model": 32,
+          "lambda_l1": 0.02,
+          "diagonal_force": 100.0,
+          "epochs": 30,
+          "n_heads": 4,
+          "e_layers": 2,
+          "l1_anneal_epochs": 0,
+          "dropout": 0.1,
+          "adj_init": 1.0,
+          "shuffle_mode": "dataloader"
+        }
+      }
+    },
+    "Mixed_50": {
+      "dataset_type": "mixed",
+      "models": {
+        "mse": {
+          "lr": 0.001,
+          "batch_size": 32,
+          "seq_len": 3,
+          "d_model": 32,
+          "lambda_l1": 0.01,
+          "diagonal_force": 100.0,
+          "epochs": 35,
+          "n_heads": 4,
+          "e_layers": 2,
+          "l1_anneal_epochs": 0,
+          "dropout": 0.1,
+          "adj_init": -1.0,
+          "shuffle_mode": "dataloader"
+        },
+        "nll": {
+          "lr": 0.001,
+          "batch_size": 32,
+          "seq_len": 3,
+          "d_model": 32,
+          "lambda_l1": 0.01,
+          "diagonal_force": 100.0,
+          "epochs": 75,
+          "n_heads": 4,
+          "e_layers": 2,
+          "l1_anneal_epochs": 0,
+          "dropout": 0.1,
+          "adj_init": 1.0,
+          "shuffle_mode": "dataloader"
+        },
+        "dual": {
+          "lr": 0.001,
+          "batch_size": 32,
+          "seq_len": 3,
+          "d_model": 32,
+          "lambda_l1": 0.01,
+          "diagonal_force": 100.0,
+          "epochs": 75,
+          "n_heads": 4,
+          "e_layers": 2,
+          "l1_anneal_epochs": 0
+        }
+      }
+    },
+    "Mixed_75": {
+      "dataset_type": "mixed",
+      "models": {
+        "mse": {
+          "lr": 0.0001,
+          "batch_size": 64,
+          "seq_len": 3,
+          "d_model": 16,
+          "lambda_l1": 0.01,
+          "diagonal_force": 100.0,
+          "epochs": 5,
+          "n_heads": 4,
+          "e_layers": 2,
+          "l1_anneal_epochs": 0,
+          "dropout": 0.1,
+          "adj_init": -1.0,
+          "shuffle_mode": "dataloader"
+        },
+        "nll": {
+          "lr": 0.003,
+          "batch_size": 32,
+          "seq_len": 1,
+          "d_model": 32,
+          "lambda_l1": 0.01,
+          "diagonal_force": 100.0,
+          "epochs": 35,
+          "n_heads": 4,
+          "e_layers": 2,
+          "l1_anneal_epochs": 0,
+          "dropout": 0.1,
+          "adj_init": 1.0,
+          "shuffle_mode": "dataloader"
+        },
+        "dual": {
+          "lr": 0.003,
+          "batch_size": 32,
+          "seq_len": 1,
+          "d_model": 32,
+          "lambda_l1": 0.01,
+          "diagonal_force": 100.0,
+          "epochs": 35,
+          "n_heads": 4,
+          "e_layers": 2,
+          "l1_anneal_epochs": 0
+        }
+      }
+    },
+    "Mixed_100": {
+      "dataset_type": "mixed",
+      "models": {
+        "mse": {
+          "lr": 0.001,
+          "batch_size": 16,
+          "seq_len": 3,
+          "d_model": 16,
+          "lambda_l1": 0.001,
+          "diagonal_force": 100.0,
+          "epochs": 5,
+          "n_heads": 4,
+          "e_layers": 2,
+          "l1_anneal_epochs": 0,
+          "dropout": 0.1,
+          "adj_init": -1.0,
+          "shuffle_mode": "dataloader"
+        },
+        "nll": {
+          "lr": 0.003,
+          "batch_size": 32,
+          "seq_len": 1,
+          "d_model": 32,
+          "lambda_l1": 0.01,
+          "diagonal_force": 100.0,
+          "epochs": 20,
+          "n_heads": 4,
+          "e_layers": 2,
+          "l1_anneal_epochs": 0,
+          "dropout": 0.1,
+          "adj_init": 1.0,
+          "shuffle_mode": "dataloader"
+        },
+        "dual": {
+          "lr": 0.003,
+          "batch_size": 32,
+          "seq_len": 1,
+          "d_model": 32,
+          "lambda_l1": 0.01,
+          "diagonal_force": 100.0,
+          "epochs": 20,
+          "n_heads": 4,
+          "e_layers": 2,
+          "l1_anneal_epochs": 0
+        }
+      }
+    },
+    "RHINO_N5": {
+      "dataset_type": "rhino",
+      "models": {
+        "mse": {
+          "batch_size": 32,
+          "d_model": 32,
+          "diagonal_force": 100,
+          "epochs": 35,
+          "l1_anneal_epochs": 0,
+          "lambda_l1": 0.03,
+          "lr": 0.001,
+          "seq_len": 2,
+          "n_heads": 4,
+          "e_layers": 2,
+          "adj_init": -1.0,
+          "dropout": 0.1,
+          "grad_clip": 0.0,
+          "shuffle_mode": "dataloader"
+        },
+        "nll": {
+          "lr": 0.001,
+          "batch_size": 128,
+          "seq_len": 5,
+          "d_model": 32,
+          "lambda_l1": 0.0005,
+          "diagonal_force": 100.0,
+          "epochs": 50,
+          "n_heads": 4,
+          "e_layers": 2,
+          "l1_anneal_epochs": 0,
+          "dropout": 0.1,
+          "adj_init": 1.0,
+          "shuffle_mode": "device"
+        }
+      }
+    },
+    "RHINO_N10": {
+      "dataset_type": "rhino",
+      "models": {
+        "mse": {
+          "batch_size": 32,
+          "d_model": 32,
+          "diagonal_force": 100,
+          "epochs": 35,
+          "l1_anneal_epochs": 0,
+          "lambda_l1": 0.003,
+          "lr": 0.001,
+          "seq_len": 2,
+          "n_heads": 4,
+          "e_layers": 2,
+          "adj_init": -1.0,
+          "dropout": 0.1,
+          "grad_clip": 0.0,
+          "shuffle_mode": "dataloader"
+        },
+        "nll": {
+          "lr": 0.001,
+          "batch_size": 32,
+          "seq_len": 2,
+          "d_model": 32,
+          "lambda_l1": 0.003,
+          "diagonal_force": 100.0,
+          "epochs": 35,
+          "n_heads": 4,
+          "e_layers": 2,
+          "l1_anneal_epochs": 0,
+          "dropout": 0.1,
+          "adj_init": 1.0,
+          "shuffle_mode": "dataloader"
+        }
+      }
+    },
+    "RHINO_N20": {
+      "dataset_type": "rhino",
+      "models": {
+        "mse": {
+          "batch_size": 32,
+          "d_model": 32,
+          "diagonal_force": 100,
+          "epochs": 35,
+          "l1_anneal_epochs": 0,
+          "lambda_l1": 0.03,
+          "lr": 0.001,
+          "seq_len": 2,
+          "n_heads": 4,
+          "e_layers": 2,
+          "adj_init": -1.0,
+          "dropout": 0.1,
+          "grad_clip": 0.0,
+          "shuffle_mode": "dataloader"
+        },
+        "nll": {
+          "lr": 0.003,
+          "batch_size": 128,
+          "seq_len": 5,
+          "d_model": 64,
+          "lambda_l1": 0.003,
+          "diagonal_force": 0.0,
+          "epochs": 43,
+          "n_heads": 4,
+          "e_layers": 2,
+          "l1_anneal_epochs": 0,
+          "dropout": 0.0,
+          "adj_init": 1.0,
+          "shuffle_mode": "device"
+        }
+      }
+    },
+    "RHINO_N40": {
+      "dataset_type": "rhino",
+      "models": {
+        "mse": {
+          "batch_size": 32,
+          "d_model": 32,
+          "diagonal_force": 100,
+          "epochs": 35,
+          "l1_anneal_epochs": 0,
+          "lambda_l1": 0.03,
+          "lr": 0.001,
+          "seq_len": 2,
+          "n_heads": 4,
+          "e_layers": 2,
+          "adj_init": -1.0,
+          "dropout": 0.1,
+          "grad_clip": 0.0,
+          "shuffle_mode": "dataloader"
+        },
+        "nll": {
+          "lr": 0.001,
+          "batch_size": 128,
+          "seq_len": 5,
+          "d_model": 64,
+          "lambda_l1": 0.01,
+          "diagonal_force": 0.0,
+          "epochs": 158,
+          "n_heads": 4,
+          "e_layers": 2,
+          "l1_anneal_epochs": 0,
+          "dropout": 0.1,
+          "adj_init": 0.0,
+          "shuffle_mode": "device"
+        }
+      }
+    },
+    "DREAM_Ecoli1": {
+      "dataset_type": "dream3",
+      "models": {
+        "mse": {
+          "lr": 0.001,
+          "batch_size": 32,
+          "seq_len": 5,
+          "d_model": 32,
+          "lambda_l1": 0.5,
+          "diagonal_force": -100.0,
+          "epochs": 20,
+          "n_heads": 4,
+          "e_layers": 2,
+          "l1_anneal_epochs": 0,
+          "dropout": 0.1,
+          "adj_init": -1.0,
+          "shuffle_mode": "dataloader"
+        },
+        "nll": {
+          "lr": 0.001,
+          "batch_size": 32,
+          "seq_len": 5,
+          "d_model": 64,
+          "lambda_l1": 0.01,
+          "diagonal_force": -100.0,
+          "epochs": 20,
+          "n_heads": 4,
+          "e_layers": 2,
+          "l1_anneal_epochs": 0,
+          "dropout": 0.1,
+          "adj_init": 1.0,
+          "shuffle_mode": "dataloader"
+        }
+      }
+    },
+    "DREAM_Ecoli2": {
+      "dataset_type": "dream3",
+      "models": {
+        "mse": {
+          "lr": 0.001,
+          "batch_size": 32,
+          "seq_len": 5,
+          "d_model": 32,
+          "lambda_l1": 0.005,
+          "diagonal_force": 100.0,
+          "epochs": 65,
+          "n_heads": 4,
+          "e_layers": 2,
+          "l1_anneal_epochs": 0,
+          "dropout": 0.1,
+          "adj_init": -1.0,
+          "shuffle_mode": "dataloader"
+        },
+        "nll": {
+          "lr": 0.001,
+          "batch_size": 32,
+          "seq_len": 5,
+          "d_model": 64,
+          "lambda_l1": 1.0,
+          "diagonal_force": 100.0,
+          "epochs": 3,
+          "n_heads": 4,
+          "e_layers": 2,
+          "l1_anneal_epochs": 0,
+          "dropout": 0.1,
+          "adj_init": 1.0,
+          "shuffle_mode": "dataloader"
+        }
+      }
+    },
+    "DREAM_Yeast1": {
+      "dataset_type": "dream3",
+      "models": {
+        "mse": {
+          "lr": 0.001,
+          "batch_size": 16,
+          "seq_len": 5,
+          "d_model": 64,
+          "lambda_l1": 0.0005,
+          "diagonal_force": 100.0,
+          "epochs": 35,
+          "n_heads": 4,
+          "e_layers": 2,
+          "l1_anneal_epochs": 0,
+          "dropout": 0.1,
+          "adj_init": -1.0,
+          "shuffle_mode": "dataloader"
+        },
+        "nll": {
+          "lr": 0.001,
+          "batch_size": 32,
+          "seq_len": 5,
+          "d_model": 64,
+          "lambda_l1": 0.001,
+          "diagonal_force": 100.0,
+          "epochs": 35,
+          "n_heads": 4,
+          "e_layers": 2,
+          "l1_anneal_epochs": 0,
+          "dropout": 0.1,
+          "adj_init": 1.0,
+          "shuffle_mode": "dataloader"
+        }
+      }
+    },
+    "DREAM_Yeast2": {
+      "dataset_type": "dream3",
+      "models": {
+        "mse": {
+          "lr": 0.001,
+          "batch_size": 32,
+          "seq_len": 5,
+          "d_model": 32,
+          "lambda_l1": 0.001,
+          "diagonal_force": 0.0,
+          "epochs": 20,
+          "n_heads": 4,
+          "e_layers": 2,
+          "l1_anneal_epochs": 0,
+          "dropout": 0.1,
+          "adj_init": -1.0,
+          "shuffle_mode": "dataloader"
+        },
+        "nll": {
+          "lr": 0.0001,
+          "batch_size": 32,
+          "seq_len": 5,
+          "d_model": 64,
+          "lambda_l1": 0.001,
+          "diagonal_force": 100.0,
+          "epochs": 15,
+          "n_heads": 4,
+          "e_layers": 2,
+          "l1_anneal_epochs": 0,
+          "dropout": 0.1,
+          "adj_init": 1.0,
+          "shuffle_mode": "dataloader"
+        }
+      }
+    },
+    "DREAM_Yeast3": {
+      "dataset_type": "dream3",
+      "models": {
+        "mse": {
+          "lr": 0.001,
+          "batch_size": 16,
+          "seq_len": 5,
+          "d_model": 64,
+          "lambda_l1": 0.5,
+          "diagonal_force": -100.0,
+          "epochs": 20,
+          "n_heads": 4,
+          "e_layers": 2,
+          "l1_anneal_epochs": 0,
+          "dropout": 0.1,
+          "adj_init": -1.0,
+          "shuffle_mode": "dataloader"
+        },
+        "nll": {
+          "lr": 0.01,
+          "batch_size": 16,
+          "seq_len": 1,
+          "d_model": 16,
+          "lambda_l1": 0.1,
+          "diagonal_force": -100.0,
+          "epochs": 2,
+          "n_heads": 4,
+          "e_layers": 2,
+          "l1_anneal_epochs": 0,
+          "dropout": 0.1,
+          "adj_init": 1.0,
+          "shuffle_mode": "dataloader"
+        }
+      }
+    },
+    "CausalTime_traffic": {
+      "dataset_type": "causaltime",
+      "models": {
+        "mse": {
+          "lr": 0.01,
+          "batch_size": 32,
+          "seq_len": 3,
+          "d_model": 64,
+          "lambda_l1": 0.5,
+          "diagonal_force": 100.0,
+          "epochs": 17,
+          "n_heads": 4,
+          "e_layers": 2,
+          "l1_anneal_epochs": 0,
+          "dropout": 0.1,
+          "adj_init": 1.0,
+          "shuffle_mode": "dataloader"
+        },
+        "nll": {
+          "lr": 0.01,
+          "batch_size": 32,
+          "seq_len": 3,
+          "d_model": 64,
+          "lambda_l1": 0.001,
+          "diagonal_force": 100.0,
+          "epochs": 11,
+          "n_heads": 4,
+          "e_layers": 2,
+          "l1_anneal_epochs": 0,
+          "dropout": 0.1,
+          "adj_init": 1.0,
+          "shuffle_mode": "dataloader"
+        }
+      }
+    },
+    "CausalTime_pm25": {
+      "dataset_type": "causaltime",
+      "models": {
+        "mse": {
+          "lr": 0.01,
+          "batch_size": 32,
+          "seq_len": 3,
+          "d_model": 64,
+          "lambda_l1": 1.0,
+          "diagonal_force": 100.0,
+          "epochs": 16,
+          "n_heads": 4,
+          "e_layers": 2,
+          "l1_anneal_epochs": 0,
+          "dropout": 0.1,
+          "adj_init": 1.0,
+          "shuffle_mode": "dataloader"
+        },
+        "nll": {
+          "lr": 0.003,
+          "batch_size": 64,
+          "seq_len": 3,
+          "d_model": 64,
+          "lambda_l1": 0.01,
+          "diagonal_force": 100.0,
+          "epochs": 20,
+          "n_heads": 4,
+          "e_layers": 2,
+          "l1_anneal_epochs": 0,
+          "dropout": 0.1,
+          "adj_init": 1.0,
+          "shuffle_mode": "dataloader"
+        }
+      }
+    },
+    "CausalTime_medical": {
+      "dataset_type": "causaltime",
+      "models": {
+        "mse": {
+          "lr": 0.01,
+          "batch_size": 32,
+          "seq_len": 3,
+          "d_model": 64,
+          "lambda_l1": 1.0,
+          "diagonal_force": 100.0,
+          "epochs": 35,
+          "n_heads": 4,
+          "e_layers": 2,
+          "l1_anneal_epochs": 0,
+          "dropout": 0.1,
+          "adj_init": -1.0,
+          "shuffle_mode": "dataloader"
+        },
+        "nll": {
+          "lr": 0.01,
+          "batch_size": 32,
+          "seq_len": 3,
+          "d_model": 64,
+          "lambda_l1": 0.5,
+          "diagonal_force": 100.0,
+          "epochs": 15,
+          "n_heads": 4,
+          "e_layers": 2,
+          "l1_anneal_epochs": 0,
+          "dropout": 0.1,
+          "adj_init": 1.0,
+          "shuffle_mode": "dataloader"
+        }
+      }
+    }
+  },
+  "datasets": {
+    "F_10_T_250_dataset_0.npz": {
+      "configuration": "Lorenz_F10_T250",
+      "path": "data/lorenz96/F_10_T_250_dataset_0.npz",
+      "seed": 0
+    },
+    "F_10_T_250_dataset_1.npz": {
+      "configuration": "Lorenz_F10_T250",
+      "path": "data/lorenz96/F_10_T_250_dataset_1.npz",
+      "seed": 0
+    },
+    "F_10_T_250_dataset_2.npz": {
+      "configuration": "Lorenz_F10_T250",
+      "path": "data/lorenz96/F_10_T_250_dataset_2.npz",
+      "seed": 0
+    },
+    "F_10_T_250_dataset_3.npz": {
+      "configuration": "Lorenz_F10_T250",
+      "path": "data/lorenz96/F_10_T_250_dataset_3.npz",
+      "seed": 0
+    },
+    "F_10_T_250_dataset_4.npz": {
+      "configuration": "Lorenz_F10_T250",
+      "path": "data/lorenz96/F_10_T_250_dataset_4.npz",
+      "seed": 0
+    },
+    "F_10_T_250_dataset_5.npz": {
+      "configuration": "Lorenz_F10_T250",
+      "path": "data/lorenz96/F_10_T_250_dataset_5.npz",
+      "seed": 0
+    },
+    "F_10_T_500_dataset_1.npz": {
+      "configuration": "Lorenz_F10_T500",
+      "path": "data/lorenz96/F_10_T_500_dataset_1.npz",
+      "seed": 0
+    },
+    "F_10_T_500_dataset_2.npz": {
+      "configuration": "Lorenz_F10_T500",
+      "path": "data/lorenz96/F_10_T_500_dataset_2.npz",
+      "seed": 0
+    },
+    "F_10_T_500_dataset_3.npz": {
+      "configuration": "Lorenz_F10_T500",
+      "path": "data/lorenz96/F_10_T_500_dataset_3.npz",
+      "seed": 0
+    },
+    "F_10_T_500_dataset_4.npz": {
+      "configuration": "Lorenz_F10_T500",
+      "path": "data/lorenz96/F_10_T_500_dataset_4.npz",
+      "seed": 0
+    },
+    "F_10_T_500_dataset_5.npz": {
+      "configuration": "Lorenz_F10_T500",
+      "path": "data/lorenz96/F_10_T_500_dataset_5.npz",
+      "seed": 0
+    },
+    "F_40_T_250_dataset_0.npz": {
+      "configuration": "Lorenz_F40_T250",
+      "path": "data/lorenz96/F_40_T_250_dataset_0.npz",
+      "seed": 0
+    },
+    "F_40_T_250_dataset_1.npz": {
+      "configuration": "Lorenz_F40_T250",
+      "path": "data/lorenz96/F_40_T_250_dataset_1.npz",
+      "seed": 0
+    },
+    "F_40_T_250_dataset_2.npz": {
+      "configuration": "Lorenz_F40_T250",
+      "path": "data/lorenz96/F_40_T_250_dataset_2.npz",
+      "seed": 0
+    },
+    "F_40_T_250_dataset_3.npz": {
+      "configuration": "Lorenz_F40_T250",
+      "path": "data/lorenz96/F_40_T_250_dataset_3.npz",
+      "seed": 0
+    },
+    "F_40_T_250_dataset_4.npz": {
+      "configuration": "Lorenz_F40_T250",
+      "path": "data/lorenz96/F_40_T_250_dataset_4.npz",
+      "seed": 0
+    },
+    "F_40_T_250_dataset_5.npz": {
+      "configuration": "Lorenz_F40_T250",
+      "path": "data/lorenz96/F_40_T_250_dataset_5.npz",
+      "seed": 0
+    },
+    "F_40_T_500_dataset_1.npz": {
+      "configuration": "Lorenz_F40_T500",
+      "path": "data/lorenz96/F_40_T_500_dataset_1.npz",
+      "seed": 0
+    },
+    "F_40_T_500_dataset_2.npz": {
+      "configuration": "Lorenz_F40_T500",
+      "path": "data/lorenz96/F_40_T_500_dataset_2.npz",
+      "seed": 0
+    },
+    "F_40_T_500_dataset_3.npz": {
+      "configuration": "Lorenz_F40_T500",
+      "path": "data/lorenz96/F_40_T_500_dataset_3.npz",
+      "seed": 0
+    },
+    "F_40_T_500_dataset_4.npz": {
+      "configuration": "Lorenz_F40_T500",
+      "path": "data/lorenz96/F_40_T_500_dataset_4.npz",
+      "seed": 0
+    },
+    "F_40_T_500_dataset_5.npz": {
+      "configuration": "Lorenz_F40_T500",
+      "path": "data/lorenz96/F_40_T_500_dataset_5.npz",
+      "seed": 0
+    },
+    "S_30_T_1000_dataset_0.npz": {
+      "configuration": "VAR_T1000",
+      "path": "data/var/S_30_T_1000_dataset_0.npz",
+      "seed": 0
+    },
+    "S_30_T_1000_dataset_1.npz": {
+      "configuration": "VAR_T1000",
+      "path": "data/var/S_30_T_1000_dataset_1.npz",
+      "seed": 0
+    },
+    "S_30_T_1000_dataset_2.npz": {
+      "configuration": "VAR_T1000",
+      "path": "data/var/S_30_T_1000_dataset_2.npz",
+      "seed": 0
+    },
+    "S_30_T_1000_dataset_3.npz": {
+      "configuration": "VAR_T1000",
+      "path": "data/var/S_30_T_1000_dataset_3.npz",
+      "seed": 0
+    },
+    "S_30_T_1000_dataset_4.npz": {
+      "configuration": "VAR_T1000",
+      "path": "data/var/S_30_T_1000_dataset_4.npz",
+      "seed": 0
+    },
+    "S_30_T_1000_dataset_5.npz": {
+      "configuration": "VAR_T1000",
+      "path": "data/var/S_30_T_1000_dataset_5.npz",
+      "seed": 0
+    },
+    "S_30_T_500_dataset_0.npz": {
+      "configuration": "VAR_T500",
+      "path": "data/var/S_30_T_500_dataset_0.npz",
+      "seed": 0
+    },
+    "S_30_T_500_dataset_1.npz": {
+      "configuration": "VAR_T500",
+      "path": "data/var/S_30_T_500_dataset_1.npz",
+      "seed": 0
+    },
+    "S_30_T_500_dataset_2.npz": {
+      "configuration": "VAR_T500",
+      "path": "data/var/S_30_T_500_dataset_2.npz",
+      "seed": 0
+    },
+    "S_30_T_500_dataset_3.npz": {
+      "configuration": "VAR_T500",
+      "path": "data/var/S_30_T_500_dataset_3.npz",
+      "seed": 0
+    },
+    "S_30_T_500_dataset_4.npz": {
+      "configuration": "VAR_T500",
+      "path": "data/var/S_30_T_500_dataset_4.npz",
+      "seed": 0
+    },
+    "S_30_T_500_dataset_5.npz": {
+      "configuration": "VAR_T500",
+      "path": "data/var/S_30_T_500_dataset_5.npz",
+      "seed": 0
+    },
+    "heteroscedastic_data_100_regen.npz": {
+      "configuration": "Mixed_100",
+      "path": "data/mixed_physics/regenerated/heteroscedastic_data_100_regen.npz",
+      "seed": 0
+    },
+    "heteroscedastic_data_50_regen.npz": {
+      "configuration": "Mixed_50",
+      "path": "data/mixed_physics/regenerated/heteroscedastic_data_50_regen.npz",
+      "seed": 0
+    },
+    "heteroscedastic_data_75_regen.npz": {
+      "configuration": "Mixed_75",
+      "path": "data/mixed_physics/regenerated/heteroscedastic_data_75_regen.npz",
+      "seed": 0
+    },
+    "rhino_paper_ER_N10_noinst_history_seed0.npz": {
+      "configuration": "RHINO_N10",
+      "path": "data/rhino/rhino_paper_ER_N10_noinst_history_seed0.npz",
+      "seed": 0
+    },
+    "rhino_paper_ER_N10_noinst_history_seed1.npz": {
+      "configuration": "RHINO_N10",
+      "path": "data/rhino/rhino_paper_ER_N10_noinst_history_seed1.npz",
+      "seed": 1
+    },
+    "rhino_paper_ER_N10_noinst_history_seed2.npz": {
+      "configuration": "RHINO_N10",
+      "path": "data/rhino/rhino_paper_ER_N10_noinst_history_seed2.npz",
+      "seed": 2
+    },
+    "rhino_paper_ER_N10_noinst_history_seed3.npz": {
+      "configuration": "RHINO_N10",
+      "path": "data/rhino/rhino_paper_ER_N10_noinst_history_seed3.npz",
+      "seed": 3
+    },
+    "rhino_paper_ER_N10_noinst_history_seed4.npz": {
+      "configuration": "RHINO_N10",
+      "path": "data/rhino/rhino_paper_ER_N10_noinst_history_seed4.npz",
+      "seed": 4
+    },
+    "rhino_paper_ER_N20_noinst_history_seed0.npz": {
+      "configuration": "RHINO_N20",
+      "path": "data/rhino/rhino_paper_ER_N20_noinst_history_seed0.npz",
+      "seed": 0
+    },
+    "rhino_paper_ER_N20_noinst_history_seed1.npz": {
+      "configuration": "RHINO_N20",
+      "path": "data/rhino/rhino_paper_ER_N20_noinst_history_seed1.npz",
+      "seed": 1
+    },
+    "rhino_paper_ER_N20_noinst_history_seed2.npz": {
+      "configuration": "RHINO_N20",
+      "path": "data/rhino/rhino_paper_ER_N20_noinst_history_seed2.npz",
+      "seed": 2
+    },
+    "rhino_paper_ER_N20_noinst_history_seed3.npz": {
+      "configuration": "RHINO_N20",
+      "path": "data/rhino/rhino_paper_ER_N20_noinst_history_seed3.npz",
+      "seed": 3
+    },
+    "rhino_paper_ER_N20_noinst_history_seed4.npz": {
+      "configuration": "RHINO_N20",
+      "path": "data/rhino/rhino_paper_ER_N20_noinst_history_seed4.npz",
+      "seed": 4
+    },
+    "rhino_paper_ER_N40_noinst_history_seed0.npz": {
+      "configuration": "RHINO_N40",
+      "path": "data/rhino/rhino_paper_ER_N40_noinst_history_seed0.npz",
+      "seed": 0
+    },
+    "rhino_paper_ER_N40_noinst_history_seed1.npz": {
+      "configuration": "RHINO_N40",
+      "path": "data/rhino/rhino_paper_ER_N40_noinst_history_seed1.npz",
+      "seed": 1
+    },
+    "rhino_paper_ER_N40_noinst_history_seed2.npz": {
+      "configuration": "RHINO_N40",
+      "path": "data/rhino/rhino_paper_ER_N40_noinst_history_seed2.npz",
+      "seed": 2
+    },
+    "rhino_paper_ER_N40_noinst_history_seed3.npz": {
+      "configuration": "RHINO_N40",
+      "path": "data/rhino/rhino_paper_ER_N40_noinst_history_seed3.npz",
+      "seed": 3
+    },
+    "rhino_paper_ER_N40_noinst_history_seed4.npz": {
+      "configuration": "RHINO_N40",
+      "path": "data/rhino/rhino_paper_ER_N40_noinst_history_seed4.npz",
+      "seed": 4
+    },
+    "rhino_paper_ER_N5_noinst_history_seed0.npz": {
+      "configuration": "RHINO_N5",
+      "path": "data/rhino/rhino_paper_ER_N5_noinst_history_seed0.npz",
+      "seed": 0
+    },
+    "rhino_paper_ER_N5_noinst_history_seed1.npz": {
+      "configuration": "RHINO_N5",
+      "path": "data/rhino/rhino_paper_ER_N5_noinst_history_seed1.npz",
+      "seed": 1
+    },
+    "rhino_paper_ER_N5_noinst_history_seed2.npz": {
+      "configuration": "RHINO_N5",
+      "path": "data/rhino/rhino_paper_ER_N5_noinst_history_seed2.npz",
+      "seed": 2
+    },
+    "rhino_paper_ER_N5_noinst_history_seed3.npz": {
+      "configuration": "RHINO_N5",
+      "path": "data/rhino/rhino_paper_ER_N5_noinst_history_seed3.npz",
+      "seed": 3
+    },
+    "rhino_paper_ER_N5_noinst_history_seed4.npz": {
+      "configuration": "RHINO_N5",
+      "path": "data/rhino/rhino_paper_ER_N5_noinst_history_seed4.npz",
+      "seed": 4
+    },
+    "Size100Ecoli1.pt": {
+      "configuration": "DREAM_Ecoli1",
+      "path": "data/dream3/Dream3TensorData/Size100Ecoli1.pt",
+      "seed": 0
+    },
+    "Size100Ecoli2.pt": {
+      "configuration": "DREAM_Ecoli2",
+      "path": "data/dream3/Dream3TensorData/Size100Ecoli2.pt",
+      "seed": 0
+    },
+    "Size100Yeast1.pt": {
+      "configuration": "DREAM_Yeast1",
+      "path": "data/dream3/Dream3TensorData/Size100Yeast1.pt",
+      "seed": 0
+    },
+    "Size100Yeast2.pt": {
+      "configuration": "DREAM_Yeast2",
+      "path": "data/dream3/Dream3TensorData/Size100Yeast2.pt",
+      "seed": 0
+    },
+    "Size100Yeast3.pt": {
+      "configuration": "DREAM_Yeast3",
+      "path": "data/dream3/Dream3TensorData/Size100Yeast3.pt",
+      "seed": 0
+    },
+    "traffic": {
+      "configuration": "CausalTime_traffic",
+      "path": "data/causaltime_gen_ver1.0/traffic",
+      "seed": 0
+    },
+    "pm25": {
+      "configuration": "CausalTime_pm25",
+      "path": "data/causaltime_gen_ver1.0/pm25",
+      "seed": 0
+    },
+    "medical": {
+      "configuration": "CausalTime_medical",
+      "path": "data/causaltime_gen_ver1.0/medical",
+      "seed": 0
+    }
+  }
+}

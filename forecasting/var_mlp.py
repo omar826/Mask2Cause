@@ -1,3 +1,8 @@
+from pathlib import Path
+try:
+    from . import artifact_runtime as runtime
+except ImportError:
+    import artifact_runtime as runtime
 import torch
 import torch.nn as nn
 import pandas as pd
@@ -16,7 +21,7 @@ EPOCHS = 30
 NUM_VARS = 10
 torch.manual_seed(42)
 
-BASE_PATH = "data_for_forecasting/var_data"
+BASE_PATH = str(Path(__file__).resolve().parent / "data_for_forecasting/var_data")
 DATA_DIR = os.path.join(BASE_PATH, "var_datasets")
 M2C_DIR = os.path.join(BASE_PATH, "mask2cause_matrices")
 
@@ -85,6 +90,7 @@ def run_var_mlp_benchmark():
         return
 
     csv_files = sorted([f for f in os.listdir(DATA_DIR) if f.endswith(".csv")])
+    csv_files = runtime.select_files(csv_files)
     print(f"Starting VAR MLP Benchmark on {len(csv_files)} datasets...")
     print("-" * 90)
 
@@ -154,6 +160,7 @@ def run_var_mlp_benchmark():
         print(f"{'VAR MLP CAUSAL BENCHMARK SUMMARY':^95}")
         print("="*95)
         df_final = pd.DataFrame(dataset_results)
+        runtime.save_results(df_final)
         print(df_final.to_string(index=False))
         print("-" * 95)
         print(f"Overall Average Gain         : {df_final['Gain_%'].mean():.2f}%")
@@ -161,4 +168,6 @@ def run_var_mlp_benchmark():
         print("="*95)
 
 if __name__ == "__main__":
+    runtime.configure(__file__, globals())
     run_var_mlp_benchmark()
+    runtime.ensure_results()

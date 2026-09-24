@@ -1,3 +1,8 @@
+from pathlib import Path
+try:
+    from . import artifact_runtime as runtime
+except ImportError:
+    import artifact_runtime as runtime
 import torch
 import torch.nn as nn
 import pandas as pd
@@ -13,7 +18,7 @@ warnings.filterwarnings("ignore")
 # ---------------- SETTINGS ----------------
 PRED_LEN = 1
 EPOCHS = 20
-BASE_PATH = "data_for_forecasting/dream3"
+BASE_PATH = str(Path(__file__).resolve().parent / "data_for_forecasting/dream3")
 DATA_DIR = os.path.join(BASE_PATH, "Dream3TensorData")
 M2C_DIR = os.path.join(BASE_PATH, "mask2cause_matrices")
 
@@ -92,6 +97,7 @@ def run_benchmark():
         return
 
     files = sorted([f for f in os.listdir(DATA_DIR) if f.endswith(".pt")])
+    files = runtime.select_files(files)
     print(f"Starting DREAM3 MLP Benchmark on {len(files)} datasets...")
 
     for f in tqdm(files, desc="Overall Progress"):
@@ -166,6 +172,7 @@ def run_benchmark():
     print(f"{'DREAM3 MLP CAUSAL BENCHMARK SUMMARY':^85}")
     print("="*85)
     df = pd.DataFrame(dataset_results)
+    runtime.save_results(df)
     print(df.to_string(index=False))
     print("-" * 85)
     print(f"Overall Average Gain         : {df['Gain_%'].mean():.2f}%")
@@ -173,4 +180,6 @@ def run_benchmark():
     print("="*85)
 
 if __name__ == "__main__":
+    runtime.configure(__file__, globals())
     run_benchmark()
+    runtime.ensure_results()

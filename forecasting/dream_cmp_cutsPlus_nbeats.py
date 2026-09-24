@@ -1,3 +1,8 @@
+from pathlib import Path
+try:
+    from . import artifact_runtime as runtime
+except ImportError:
+    import artifact_runtime as runtime
 import torch
 import torch.nn as nn
 import pandas as pd
@@ -14,7 +19,7 @@ warnings.filterwarnings("ignore")
 EPOCHS = 20
 torch.manual_seed(42)
 
-BASE_PATH = "data_for_forecasting/dream3"
+BASE_PATH = str(Path(__file__).resolve().parent / "data_for_forecasting/dream3")
 DATA_DIR = os.path.join(BASE_PATH, "Dream3TensorData")
 M2C_DIR = os.path.join(BASE_PATH, "mask2cause_matrices")
 CUTS_DIR = os.path.join(BASE_PATH, "cuts_plus_matrices")
@@ -94,6 +99,7 @@ def run_benchmark():
         return
 
     files = sorted([f for f in os.listdir(DATA_DIR) if f.endswith(".pt")])
+    files = runtime.select_files(files)
     print(f"Starting DREAM3 N-BEATS Benchmark (Base vs M2C vs Cuts+)...")
 
     for f in tqdm(files, desc="Overall Progress"):
@@ -149,7 +155,10 @@ def run_benchmark():
         red_c = (avg_p_b - avg_p_c) / avg_p_b * 100
 
         dataset_results.append({
-            "Dataset": f[:15],
+            "Dataset": f,
+            "Base_MSE": avg_b,
+            "M2C_MSE": avg_m,
+            "CUTS_MSE": avg_c,
             "M2C_Gain%": gain_m,
             "Cuts_Gain%": gain_c,
             "Cuts_Param_Red%": red_c,
@@ -162,6 +171,7 @@ def run_benchmark():
     print(f"{'DREAM3 N-BEATS BENCHMARK: M2C VS CUTS+':^85}")
     print("="*85)
     df = pd.DataFrame(dataset_results)
+    runtime.save_results(df)
     print(df.to_string(index=False))
     print("-" * 85)
     print(f"Overall Avg M2C Gain:  {df['M2C_Gain%'].mean():.2f}%")
@@ -169,4 +179,6 @@ def run_benchmark():
     print("="*85)
 
 if __name__ == "__main__":
+    runtime.configure(__file__, globals())
     run_benchmark()
+    runtime.ensure_results()

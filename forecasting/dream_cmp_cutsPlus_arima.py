@@ -1,3 +1,8 @@
+from pathlib import Path
+try:
+    from . import artifact_runtime as runtime
+except ImportError:
+    import artifact_runtime as runtime
 import pandas as pd
 import numpy as np
 import torch
@@ -11,7 +16,7 @@ from tqdm import tqdm
 warnings.filterwarnings("ignore")
 
 # ---------------- SETTINGS ----------------
-BASE_PATH = "data_for_forecasting/dream3"
+BASE_PATH = str(Path(__file__).resolve().parent / "data_for_forecasting/dream3")
 DATA_DIR = os.path.join(BASE_PATH, "Dream3TensorData")
 M2C_DIR = os.path.join(BASE_PATH, "mask2cause_matrices")
 CUTS_DIR = os.path.join(BASE_PATH, "cuts_plus_matrices")
@@ -45,6 +50,7 @@ def run_benchmark():
         return
 
     files = sorted([f for f in os.listdir(DATA_DIR) if f.endswith(".pt")])
+    files = runtime.select_files(files)
     print(f"Starting ARIMAX Benchmark: Base vs M2C vs Cuts+")
     print("-" * 85)
 
@@ -95,13 +101,16 @@ def run_benchmark():
         best = "M2C" if gain_m > gain_c else "Cuts+"
         
         tqdm.write(f"Done: {f:<20} | M2C Gain: {gain_m:>6.2f}% | Cuts Gain: {gain_c:>6.2f}% | Winner: {best}")
-        results.append({'m2c': gain_m, 'cuts': gain_c})
+        results.append({'Dataset': f, 'Base_MSE': avg_b, 'M2C_MSE': avg_m, 'CUTS_MSE': avg_c, 'm2c': gain_m, 'cuts': gain_c})
 
     if results:
+        runtime.save_results(pd.DataFrame(results))
         print("\n" + "="*85)
         print(f"OVERALL AVG M2C IMPROVEMENT:   {np.mean([r['m2c'] for r in results]):.2f}%")
         print(f"OVERALL AVG CUTS+ IMPROVEMENT: {np.mean([r['cuts'] for r in results]):.2f}%")
         print("="*85)
 
 if __name__ == "__main__":
+    runtime.configure(__file__, globals())
     run_benchmark()
+    runtime.ensure_results()

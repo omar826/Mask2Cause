@@ -1,3 +1,8 @@
+from pathlib import Path
+try:
+    from . import artifact_runtime as runtime
+except ImportError:
+    import artifact_runtime as runtime
 import torch
 import torch.nn as nn
 import pandas as pd
@@ -15,7 +20,7 @@ EPOCHS = 10
 NUM_VARS = 10
 torch.manual_seed(42)
 
-BASE_PATH = "data_for_forecasting/lor_data"
+BASE_PATH = str(Path(__file__).resolve().parent / "data_for_forecasting/lor_data")
 DATA_DIR = os.path.join(BASE_PATH, "lor_data")
 M2C_DIR = os.path.join(BASE_PATH, "mask2cause_matrices")
 
@@ -81,6 +86,7 @@ def run_benchmark():
         return
 
     csv_files = sorted([f for f in os.listdir(DATA_DIR) if f.endswith(".csv")])
+    csv_files = runtime.select_files(csv_files)
     print(f"Starting Lorenz N-BEATS Benchmark on {len(csv_files)} datasets...")
     print("-" * 90)
 
@@ -151,6 +157,7 @@ def run_benchmark():
     print(f"{'LORENZ N-BEATS CAUSAL BENCHMARK SUMMARY':^95}")
     print("="*95)
     df = pd.DataFrame(dataset_results)
+    runtime.save_results(df)
     print(df.to_string(index=False))
     print("-" * 95)
     print(f"Overall Average Gain         : {df['Gain_%'].mean():.2f}%")
@@ -158,4 +165,6 @@ def run_benchmark():
     print("="*95)
 
 if __name__ == "__main__":
+    runtime.configure(__file__, globals())
     run_benchmark()
+    runtime.ensure_results()

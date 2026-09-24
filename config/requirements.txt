@@ -1,20 +1,8 @@
-# --- Core Deep Learning ---
-torch>=2.0.0
-# Optional: Only if using Windows AMD/Intel GPU acceleration
-# torch-directml; platform_system == "Windows"
-
-# --- Data Handling & Math ---
-numpy>=1.22.0
-pandas>=1.4.0
-scipy>=1.7.0
-
-# --- Evaluation & Machine Learning ---
-scikit-learn>=1.0.0
-
-# --- Visualization & Logging ---
-matplotlib>=3.5.0
-seaborn>=0.11.0
-tqdm>=4.64.0
-
-# Forecasting
-statsmodels
+# Python 3.10+; causal discovery and forecasting
+numpy>=1.24
+torch>=2.0
+scikit-learn>=1.2
+pandas>=1.5
+scipy>=1.10
+statsmodels>=0.14
+tqdm>=4.64
