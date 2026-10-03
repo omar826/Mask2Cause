@@ -1,6 +1,4 @@
-"""Original benchmark loaders; RHINO loader ported from the supplied artifact.
-DREAM3 retains the original flattened-series windowing.
-"""
+
 import os, re, csv
 import numpy as np
 import torch

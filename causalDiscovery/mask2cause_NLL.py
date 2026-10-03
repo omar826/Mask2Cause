@@ -1,4 +1,4 @@
-"""M2C-NLL: original architecture with configurable dropout and graph initialization."""
+
 import math
 import torch
 from torch import nn

@@ -1,4 +1,4 @@
-"""Fixed-epoch training and consistent reporting for every supported benchmark."""
+
 import hashlib
 import importlib
 import json

@@ -1,9 +1,4 @@
 """Two global graphs, separate mean/variance paths, shared encoder weights.
-
-The original NLL architecture and loader are unchanged. Each graph is shared
-across all encoder layers and attention heads in its respective prediction path.
-Only variable-local tokenization is shared as activations; cross-variable
-representations are computed independently for the two output heads.
 """
 import torch
 from torch import nn

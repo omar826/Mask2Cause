@@ -18,22 +18,14 @@ Use Python 3.10 or newer and install the dependencies:
 python -m pip install -r config/requirements.txt
 ```
 
-Download CausalTime from its [official website](https://www.causaltime.cc/).
-Place each dataset's `gen_data.npy` and `graph.npy` under
-`data/causaltime_gen_ver1.0/traffic`, `pm25`, or `medical`.
-
-Download DREAM3 from the [official SRU implementation used by the paper](https://github.com/sakhanna/SRU_for_GCI/tree/master/data).
-Place `Size100Ecoli1.pt`, `Size100Ecoli2.pt`, and the three `Size100Yeast*.pt`
-files under `data/dream3/Dream3TensorData/`, with the corresponding ground-truth
-TSV files under `data/dream3/TrueGeneNetworks/`. Both loaders are included;
-these two benchmarks are not bundled.
+Download CausalTime and DREAM3 from their offical sources.
 
 ## Run with saved settings
 
 Supply the model (`mse`, `nll`, or `dual`) and an exact dataset filename:
 
 ```sh
-python -m causalDiscovery.run_and_tune mse rhino_paper_ER_N10_noinst_history_seed0.npz
+python -m causalDiscovery.run_and_tune mse rhino_paper_ER_N10_noinst_history_seed1.npz
 python -m causalDiscovery.run_and_tune nll S_30_T_500_dataset_1.npz
 python -m causalDiscovery.run_and_tune dual heteroscedastic_data_50_regen.npz
 ```
